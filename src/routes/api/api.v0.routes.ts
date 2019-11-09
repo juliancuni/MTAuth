@@ -1,10 +1,22 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
+import { AuthGuard } from '../../middlewares/auth.guard'
+
 const router = express.Router();
+
+router.use(AuthGuard);
 
 router.get('/', (req, res) => {
     res.statusCode = 200;
     res.json({ "msg": "who are you?!" });
     res.end();
+})
+
+router.get('/login', (req, res) => {
+    //gjej payload nga body & sanitize
+
 })
 
 router.get('/test', (req, res) => {

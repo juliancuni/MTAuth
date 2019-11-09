@@ -134,3 +134,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/node,windows,visualstudiocode
+
+#ignore app.config
+src/app.config.ts
