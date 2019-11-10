@@ -1,37 +1,22 @@
 import dotenv from 'dotenv';
+import path from 'path';
 dotenv.config();
 
 import express from 'express';
 import { AuthGuard } from '../../middlewares/auth.guard'
 
+import TC from '../../controllers/tenant.controller'
+
 const router = express.Router();
 
-router.use(AuthGuard);
+// router.use(AuthGuard);
 
 router.get('/', (req, res) => {
-    res.statusCode = 200;
-    res.json({ "msg": "who are you?!" });
-    res.end();
-})
+    const indexHtml = path.join(__dirname, "../../views/index.html")
+    res.sendFile(indexHtml);
+});
 
-router.get('/login', (req, res) => {
-    //gjej payload nga body & sanitize
-
-})
-
-router.get('/test', (req, res) => {
-    if (Object.entries(req.query).length !== 0 && req.query.constructor === Object) {
-        res.send(`I dont understand ${JSON.stringify(req.query)}. What are you doing?`)
-    } else {
-        res.send('test')
-    }
-})
-
-//Lastly send a msg if route is wrong
-router.get('*', (req, res) => {
-    res.statusCode = 400;
-    res.json({ "msg": "WTF are you doing here?" });
-    res.end();
-})
+router.get('/tenants', AuthGuard, TC.tenant_gjej_all);
+router.post('/tenants', AuthGuard, TC.tenant_create);
 
 export default router;
