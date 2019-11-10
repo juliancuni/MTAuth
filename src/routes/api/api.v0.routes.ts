@@ -8,9 +8,7 @@ import { AuthGuard } from '../../middlewares/auth.guard'
 import TC from '../../controllers/tenant.controller'
 
 const router = express.Router();
-
 // router.use(AuthGuard);
-
 router.get('/', (req, res) => {
     const indexHtml = path.join(__dirname, "../../views/index.html")
     res.sendFile(indexHtml);

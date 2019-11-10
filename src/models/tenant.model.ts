@@ -1,6 +1,6 @@
 import { Schema, model, Document } from 'mongoose';
 
-interface ITentant extends Document {
+export interface ITentant extends Document {
     emer: string,
     domain: string,
     email: string,
@@ -15,4 +15,3 @@ const TenantSchema = new Schema<ITentant>({
 })
 
 export default model<ITentant>('Tenant', TenantSchema);
-
