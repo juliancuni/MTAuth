@@ -4,8 +4,10 @@ dotenv.config();
 
 import express from 'express';
 import { AuthGuard } from '../../middlewares/auth.guard'
+import { UnAuthGuard } from '../../middlewares/unauth.guard'
 
 import TC from '../../controllers/tenant.controller'
+import AC from '../../controllers/auth.controller'
 
 const router = express.Router();
 // router.use(AuthGuard);
@@ -14,6 +16,7 @@ router.get('/', (req, res) => {
     res.sendFile(indexHtml);
 });
 
+router.post('/auth/login', UnAuthGuard, AC.login);
 router.get('/tenants', AuthGuard, TC.tenant_gjej_all);
 router.post('/tenants', AuthGuard, TC.tenant_create);
 

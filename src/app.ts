@@ -18,7 +18,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useUnifiedTopology', true);
-mongoose.set('debug', process.env.DEVELOPMENT ? true: false);
+mongoose.set('debug', process.env.DEVELOPMENT ? true : false);
 
 const server: http.Server = app.listen(process.env.PORT);
 server.on("listening", () => {

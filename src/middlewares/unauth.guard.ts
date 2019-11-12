@@ -5,11 +5,11 @@ error.message = "UNAUTHORIZED";
 error.name = "401";
 error.stack = "";
 
-const AuthGuard = async (req: Request, res: Response, next: NextFunction) => {
+const UnAuthGuard = async (req: Request, res: Response, next: NextFunction) => {
     let token = req.cookies.token || req.body.token || null;
-    //Nese ka token verifikoje, pastaj next();
+    //Nese ska token next();
     next();
 }
 
-export { AuthGuard }
+export { UnAuthGuard }
 
